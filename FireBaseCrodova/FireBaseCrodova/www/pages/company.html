@@ -1,0 +1,13 @@
+﻿<div>Company {{message}}</div>
+<ul>
+    <li ng-repeat="company in companies">
+        <input ng-model="company.name" ng-change="companies.$save(company)" />
+        <button type="button" ng-click="delete(company)">Delete</button> 
+    </li>
+</ul>
+<form ng-submit="addCompany()">
+    <input ng-model="app.name" />
+    <button type="submit">Add</button>
+</form>
+
+

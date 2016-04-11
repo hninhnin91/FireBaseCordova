@@ -1,0 +1,41 @@
+﻿<div>Product {{message}}</div>
+
+<form ng-submit="addProduct()" ng-show="addFormShow">
+    <input ng-model="app.name" placeholder="Product Name"/>
+    <select ng-model="app.company" ng-options="company.name for company in companies"></select>
+    <button type="submit">Add</button>
+</form>
+<form ng-submit="editProduct()" ng-show="editFormShow">
+    <input ng-model="app.name" placeholder="Product Name"/>
+    <!--<select ng-model="color" ng-options="c.name for c in colors"></select>-->
+    <!--<select ng-model="app.company" ng-options="company.name for company in companies"></select>-->
+    <!--<select ng-options="company.name for company in companies track by company.id" ng-model="app.company"></select>-->
+    <select  ng-model="app.company">
+        <option ng-repeat="company in companies" value="{{company.$id}}">{{company.name}}</option>
+    </select>
+    <button type="submit">Edit</button>
+</form>
+<div class="box-body">
+    <table class="table table-bordered">
+        <tr>
+            <th>Product Name</th>
+            <th>#</th>
+        </tr>
+        <tr ng-repeat="product in products">
+            <td>{{product.name}}</td>
+            <td>
+                <button type="button" ng-click="showProduct(product)">Edit</button>
+                <button type="button" ng-click="delete(product)">Delete</button>
+                <button type="button" ng-click="detail(product)">Detail</button>
+            </td>
+        </tr>
+    </table>
+</div><!-- /.box-body -->
+<button type="button" ng-click="showForm()" ng-hide="addFormShow">+</button> 
+<button type="button" ng-click="hideForm()" ng-show="addFormShow">-</button> 
+<ul>
+    <li>{{company.name}}</li>
+</ul>
+<!--<div data-ng-repeat="(companyId, company) in companies">
+    {{companyId}}: {{company.name}}
+</div>-->
